@@ -7,7 +7,6 @@ import { NdaData, EMPTY_NDA } from "@/types/nda";
 
 export default function Home() {
   const [ndaData, setNdaData] = useState<NdaData>(EMPTY_NDA);
-
   const [downloadError, setDownloadError] = useState<string | null>(null);
 
   const handleDownload = async () => {
@@ -23,52 +22,61 @@ export default function Home() {
 
   return (
     <div className="min-h-screen flex flex-col">
-      {/* Header */}
-      <header className="bg-white border-b border-gray-200 px-6 py-4 shadow-sm">
+      {/* Glassmorphism header */}
+      <header className="sticky top-0 z-10 border-b border-white/10 bg-white/5 backdrop-blur-xl px-6 py-4">
         <div className="max-w-7xl mx-auto flex items-center gap-3">
-          <span className="text-2xl font-bold text-indigo-600">Prelegal</span>
-          <span className="text-gray-300">|</span>
-          <span className="text-gray-600 text-sm font-medium">Mutual NDA Creator</span>
+          <span className="text-2xl font-bold bg-gradient-to-r from-violet-300 to-indigo-300 bg-clip-text text-transparent">
+            Prelegal
+          </span>
+          <span className="text-white/20">|</span>
+          <span className="text-white/60 text-sm font-medium tracking-wide">Mutual NDA Creator</span>
         </div>
       </header>
 
       {/* Main content */}
-      <main className="flex-1 max-w-7xl mx-auto w-full px-4 py-8 lg:px-6">
-        <div className="mb-6">
-          <h1 className="text-2xl font-bold text-gray-900">Mutual Non-Disclosure Agreement</h1>
-          <p className="text-gray-500 text-sm mt-1">
-            Enter the details on the left. The document updates live on the right.
+      <main className="flex-1 max-w-7xl mx-auto w-full px-4 py-10 lg:px-6">
+        <div className="mb-8">
+          <h1 className="text-3xl font-bold text-white tracking-tight">
+            Mutual Non-Disclosure Agreement
+          </h1>
+          <p className="text-white/50 text-sm mt-2">
+            Enter the details on the left — the document updates live on the right.
           </p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
-          {/* Form panel */}
-          <div className="bg-white rounded-lg border border-gray-200 shadow-sm p-6">
+          {/* Form panel — light card */}
+          <div className="rounded-2xl bg-white shadow-2xl shadow-black/30 p-6">
             <NdaForm data={ndaData} onChange={setNdaData} onDownload={handleDownload} />
             {downloadError && (
-              <p className="mt-3 text-sm text-red-600">{downloadError}</p>
+              <p className="mt-3 text-sm text-red-400">{downloadError}</p>
             )}
           </div>
 
           {/* Preview panel */}
-          <div className="lg:sticky lg:top-8">
-            <div className="flex items-center justify-between mb-3">
-              <span className="text-sm font-medium text-gray-700">Document Preview</span>
+          <div className="lg:sticky lg:top-24">
+            <div className="flex items-center justify-between mb-3 px-1">
+              <span className="text-sm font-medium text-white/60 uppercase tracking-wider">
+                Document Preview
+              </span>
               <button
                 onClick={handleDownload}
-                className="text-xs text-indigo-600 hover:text-indigo-500 font-medium"
+                className="text-xs text-violet-300 hover:text-violet-200 font-medium transition-colors"
               >
-                Download PDF &darr;
+                Download PDF ↓
               </button>
             </div>
-            <NdaPreview data={ndaData} />
+            {/* Subtle glow ring around preview */}
+            <div className="rounded-2xl ring-1 ring-white/10 shadow-2xl shadow-violet-900/20">
+              <NdaPreview data={ndaData} />
+            </div>
           </div>
         </div>
       </main>
 
       {/* Footer */}
-      <footer className="border-t border-gray-200 bg-white px-6 py-4 mt-8">
-        <p className="text-center text-xs text-gray-400">
+      <footer className="border-t border-white/10 px-6 py-5 mt-8">
+        <p className="text-center text-xs text-white/30">
           Prelegal — Draft common legal agreements in seconds. Not a substitute for legal advice.
         </p>
       </footer>

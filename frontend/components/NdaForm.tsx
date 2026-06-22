@@ -28,7 +28,7 @@ export default function NdaForm({ data, onChange, onDownload }: NdaFormProps) {
 
   const labelClass = "block text-sm font-medium text-gray-700 mb-1";
   const inputClass =
-    "w-full rounded-md border border-gray-300 px-3 py-2 text-sm shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500";
+    "w-full rounded-lg border border-gray-200 bg-gray-50 px-3 py-2 text-sm text-gray-900 placeholder:text-gray-400 shadow-sm focus:border-violet-500 focus:outline-none focus:ring-1 focus:ring-violet-500";
 
   return (
     <div className="space-y-5">
@@ -107,7 +107,7 @@ export default function NdaForm({ data, onChange, onDownload }: NdaFormProps) {
 
       <button
         onClick={onDownload}
-        className="w-full rounded-md bg-indigo-600 px-4 py-2.5 text-sm font-semibold text-white shadow hover:bg-indigo-500 active:bg-indigo-700 transition-colors"
+        className="w-full rounded-xl bg-gradient-to-r from-violet-600 to-indigo-600 px-4 py-2.5 text-sm font-semibold text-white shadow-lg shadow-violet-900/40 hover:from-violet-500 hover:to-indigo-500 active:scale-95 transition-all duration-150"
       >
         Download PDF
       </button>
