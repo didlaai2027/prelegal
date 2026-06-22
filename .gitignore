@@ -16,6 +16,8 @@ wheels/
 .installed.cfg
 lib/
 lib64/
+# Allow Next.js lib directory (the lib/ rule above targets Python venv lib/)
+!frontend/lib/
 .Python
 
 # Virtual environments
